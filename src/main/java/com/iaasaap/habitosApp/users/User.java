@@ -1,5 +1,6 @@
 package com.iaasaap.habitosApp.users;
 
+import lombok.Getter;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -8,6 +9,7 @@ import org.neo4j.ogm.annotation.Property;
 import java.time.LocalDateTime;
 
 @NodeEntity
+@Getter
 public class User {
     @Id
     @GeneratedValue
@@ -24,14 +26,6 @@ public class User {
         signupTS = LocalDateTime.now().toString();
         this.name = name;
         this.birthDate = birthDate;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public String getUsernName() {
-        return this.name;
     }
 
     @Override

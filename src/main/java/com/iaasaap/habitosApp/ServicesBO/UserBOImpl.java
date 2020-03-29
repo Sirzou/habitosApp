@@ -16,7 +16,7 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public List<User> getAllUsers() {
-        ArrayList userList = new ArrayList();
+        List userList = new ArrayList();
         userRepository.findAll().forEach(x -> userList.add(x));
         return userList;
     }

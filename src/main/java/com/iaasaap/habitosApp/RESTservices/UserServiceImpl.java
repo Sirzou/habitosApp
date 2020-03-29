@@ -18,8 +18,7 @@ public class UserServiceImpl implements UserService {
         return userBOImpl.getAllUsers();
     }
 
-    //@GetMapping(value="/", produces = MediaType.TEXT_PLAIN_VALUE)
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public User getUser(@PathVariable String id) {
         return userBOImpl.getUserById(Long.parseLong(id));
     }
