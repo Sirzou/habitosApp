@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4630d184-7170-4781-a7ff-cc6ec33560be" name="Default Changelist" comment="First functional commit, with functional user crud">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/RESTservices/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/RESTservices/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/ServicesBO/UserBO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/ServicesBO/UserBOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/habits/Habit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/users/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/users/UserRepository.java" afterDir="false" />
+    <list default="true" id="4630d184-7170-4781-a7ff-cc6ec33560be" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/RESTservices/HabitService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/ServicesBO/AbstractHabitBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/ServicesBO/AbstractHabitBOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/habits/AbstractHabit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/habits/AbstractHabitRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/HabitosAppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/HabitosAppApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/RESTservices/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/RESTservices/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/ServicesBO/UserBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/ServicesBO/UserBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/habits/Habit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iaasaap/habitosApp/users/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,13 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585343521020</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First functional commit, with functional user crud">
+      <created>1585345083961</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585345083961</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -122,34 +137,54 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="320" y="115" key="#Inspections/0.0.1440.900@0.0.1440.900" timestamp="1585345048780" />
-    <state x="225" y="16" key="CommitChangelistDialog2" timestamp="1585344960362">
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1585379405899">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="225" y="16" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1585344960362" />
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1585379405899" />
+    <state x="225" y="16" key="CommitChangelistDialog2" timestamp="1585345083517">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="225" y="16" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1585345083517" />
     <state x="225" y="38" key="CommitChangelistDialog2/0.23.1440.825@0.23.1440.825" timestamp="1585343520376" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1585344596453">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1585454930092">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1585344596453" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1585344596451">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1585454930092" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1585445203246" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1585348014518" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1585454930090">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1585344596451" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1585344596449">
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1585454930090" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1585445203244" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1585348014515" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1585454930089">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1585344596449" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1585344596452">
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1585454930089" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1585445203243" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1585348014514" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1585454930090">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1585344596452" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1585454930090" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1585445203245" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1585348014517" />
     <state x="476" y="168" key="RollbackChangesDialog" timestamp="1585344627437">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="476" y="168" key="RollbackChangesDialog/0.0.1440.900@0.0.1440.900" timestamp="1585344627437" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1585343582784">
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1585345096066">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1585343582784" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1585345096066" />
+    <state x="301" y="175" width="837" height="550" key="find.popup" timestamp="1585439887960">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="301" y="175" width="837" height="550" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1585439887960" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1585346991532">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1585346991532" />
   </component>
 </project>
