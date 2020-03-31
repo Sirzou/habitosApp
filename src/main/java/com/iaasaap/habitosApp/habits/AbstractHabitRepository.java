@@ -1,12 +1,12 @@
 package com.iaasaap.habitosApp.habits;
 
+import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+
 public interface AbstractHabitRepository extends CrudRepository<AbstractHabit, Long> {
 
     @Override
@@ -23,4 +23,7 @@ public interface AbstractHabitRepository extends CrudRepository<AbstractHabit, L
 
     @Override
     void deleteById(Long habitId);
+
+    @Query("MATCH (a:AbstractHabit)-[r]->(l:Level) return a, l;")
+    List<AbstractHabit> getAllHabitsWithLevels();
 }

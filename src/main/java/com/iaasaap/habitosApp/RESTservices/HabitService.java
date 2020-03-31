@@ -31,8 +31,21 @@ public class HabitService {
         return abstractHabitBO.createAbstractHabit(abstractHabit);
     }
 
+    @PutMapping("/setHabitLevels/{id}")
+    public AbstractHabit setHabitLevels(@PathVariable String id,
+                                        @RequestParam("1") String one,
+                                        @RequestParam("2") String two,
+                                        @RequestParam("3") String thr,
+                                        @RequestParam("4") String fou,
+                                        @RequestParam("5") String fiv) {
+        System.out.println("" + id + one + two + thr + fou + fiv);
+        abstractHabitBO.setAbstractHabitLevels(id, one, two, thr, fou, fiv);
+        System.out.println("habtId: " + id);
+        return null;
+    }
+
     @DeleteMapping("/abstractHabit/{id}")
-    public void deleteAbstractHabit(@PathVariable String id){
+    public void deleteAbstractHabit(@PathVariable String id) {
         abstractHabitBO.deleteAbstractHabit(id);
     }
 }
