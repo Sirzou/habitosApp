@@ -18,35 +18,13 @@ public class AbstractHabit {
     private String habitCreation;
     @Property(name = "ownerId")
     private Long ownerId;
-    @Property(name = "name")
+    @Property(name = "habitName")
     private String habitName;
     @Property(name = "description")
     private String description;
-    @Relationship(type="LEVEL", direction=Relationship.UNDIRECTED)
+    @Relationship(type = "LEVEL", direction = Relationship.UNDIRECTED)
     private List<Level> levels;
 
-    public AbstractHabit() {
-        this.habitCreation = LocalDateTime.now().toString();
-        this.ownerId = Long.parseLong("0");
-        this.levels = Collections.EMPTY_LIST;
-    }
-
-    public AbstractHabit(String name) {
-        this.habitCreation = LocalDateTime.now().toString();
-        this.habitName = name;
-    }
-
-    public AbstractHabit(String name, String description) {
-        this.habitCreation = LocalDateTime.now().toString();
-        this.habitName = name;
-        this.description = description;
-    }
-
-    public AbstractHabit(String name, Long ownerId) {
-        this.habitCreation = LocalDateTime.now().toString();
-        this.habitName = name;
-        this.ownerId = ownerId;
-    }
 
     public AbstractHabit(String name, String description, Long ownerId) {
         this.habitCreation = LocalDateTime.now().toString();
@@ -55,26 +33,20 @@ public class AbstractHabit {
         this.ownerId = ownerId;
     }
 
-
-    public AbstractHabit(LocalDateTime habitCreation, String name, Long ownerId) {
-        this.habitCreation = habitCreation.toString();
-        this.habitName = name;
-        this.ownerId = ownerId;
+    public String getHabitName() {
+        return this.habitName;
     }
 
-    public AbstractHabit(LocalDateTime habitCreation, String name, String description, Long ownerId) {
-        this.habitCreation = habitCreation.toString();
-        this.habitName = name;
-        this.description = description;
-        this.ownerId = ownerId;
+    public String getDescription() {
+        return this.description;
     }
 
-    public List<Level> getLevels(){
+    public List<Level> getLevels() {
         return this.levels;
     }
 
     public void setLevels(List<Level> levels) {
-        this.levels=levels;
+        this.levels = levels;
     }
 
     public String toString() {

@@ -9,4 +9,5 @@ public interface UserBO {
     User getUserById(Long userId);
     User createUser(User user);
     void deleteUserById(Long userId);
+    void linkHabit(String userId, String habitId);
 }

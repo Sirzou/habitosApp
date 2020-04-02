@@ -1,12 +1,13 @@
 package com.iaasaap.habitosApp.users;
 
+import com.iaasaap.habitosApp.habits.AbstractHabit;
+import com.iaasaap.habitosApp.habits.SketchHabit;
 import lombok.Getter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @NodeEntity
 @Getter
@@ -20,9 +21,10 @@ public class User {
     private String signupTS;
     @Property(name = "birthDate")
     private String birthDate;
+    @Relationship(type = "SKETCHED HABIT", direction = Relationship.OUTGOING)
+    private List<SketchHabit> sketchedHabits;
 
     public User(String name, String birthDate) {
-        //userUUID = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         signupTS = LocalDateTime.now().toString();
         this.name = name;
         this.birthDate = birthDate;
@@ -35,6 +37,26 @@ public class User {
                 ", name='" + name + '\'' +
                 ", signupTS=" + signupTS +
                 ", birthDate=" + birthDate +
+                ", habits sketched=" + (sketchedHabits == null ? "" : sketchedHabits) +
                 '}';
     }
+
+    public void setSketchFromAbstractHabit(AbstractHabit abstractHabit) {
+        List<AbstractHabit> listaAbstractHabits = new ArrayList<AbstractHabit>();
+        listaAbstractHabits.add(abstractHabit);
+        setSketchFromAbstractHabits(listaAbstractHabits);
+    }
+
+    public List<SketchHabit> getSketchedHabits() {
+        if (this.sketchedHabits == null) {
+            this.sketchedHabits = new ArrayList<>();
+        }
+        return this.sketchedHabits;
+    }
+
+    public void setSketchFromAbstractHabits(List<AbstractHabit> abstractHabits) {
+        abstractHabits.stream()
+                .forEach(abstractHabit -> sketchedHabits.add(new SketchHabit(abstractHabit)));
+    }
+
 }

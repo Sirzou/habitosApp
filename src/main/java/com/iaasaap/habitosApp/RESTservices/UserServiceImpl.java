@@ -33,4 +33,10 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(@PathVariable String id){
         userBOImpl.deleteUserById(Long.parseLong(id));
     }
+
+    @PutMapping("/linkUserHabit/{userId}/{habitId}/")
+    public void linkUserWithHabit(@PathVariable String userId,@PathVariable String habitId){
+        System.out.println(""+userId+" "+habitId);
+        userBOImpl.linkHabit(userId,habitId);
+    }
 }
