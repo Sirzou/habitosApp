@@ -1,8 +1,10 @@
 package com.iaasaap.habitosApp.RESTservices;
 
 import com.iaasaap.habitosApp.ServicesBO.AbstractHabitBO;
+import com.iaasaap.habitosApp.ServicesBO.ExecHabitBO;
 import com.iaasaap.habitosApp.ServicesBO.SketchHabitBO;
 import com.iaasaap.habitosApp.habits.AbstractHabit;
+import com.iaasaap.habitosApp.habits.ExecHabit;
 import com.iaasaap.habitosApp.habits.Level;
 import com.iaasaap.habitosApp.habits.SketchHabit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class HabitService {
     AbstractHabitBO abstractHabitBO;
     @Autowired
     SketchHabitBO sketchHabitBO;
+    @Autowired
+    ExecHabitBO execHabitBO;
 
     @GetMapping("/abstractHabits")
     List<AbstractHabit> getAbstractHabits() {
@@ -46,6 +50,7 @@ public class HabitService {
         abstractHabitBO.deleteAbstractHabit(id);
     }
 
+
     @GetMapping("/sketchHabits")
     List<SketchHabit> getSketchHabits() {
         return sketchHabitBO.getAllSketchHabits();
@@ -74,5 +79,25 @@ public class HabitService {
     @DeleteMapping("/sketchHabit/{id}")
     public void deleteSketchHabit(@PathVariable String habitId) {
         sketchHabitBO.deleteSketchHabit(habitId);
+    }
+
+
+    @GetMapping("/execHabits/{id}")
+    public ExecHabit getExecHabits(@PathVariable String id) {
+        return execHabitBO.getExecHabit(id);
+    }
+
+    @PostMapping("/createExecHabit/{sketchHabitId}")
+    public ExecHabit createExecHabit(@PathVariable String sketchHabitId) {
+        return execHabitBO.createExecHabit(sketchHabitId);
+    }
+    @PutMapping("editExecHabit/{id}/")
+    public ExecHabit editExecHabit(@RequestBody ExecHabit execHabit){
+        return execHabitBO.updateHabit(execHabit);
+    }
+
+    @DeleteMapping("/execHabit/{id}/")
+    public void deleteExecHabit(@PathVariable String id) {
+        execHabitBO.delete(id);
     }
 }

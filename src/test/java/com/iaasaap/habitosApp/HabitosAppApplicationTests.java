@@ -8,6 +8,7 @@ class HabitosAppApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

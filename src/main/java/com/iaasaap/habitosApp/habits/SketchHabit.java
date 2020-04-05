@@ -50,6 +50,17 @@ public class SketchHabit {
         this.habitName = name;
         this.description = description;
     }
+    public String getHabitName() {
+        return this.habitName;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public List<Level> getLevels() {
+        return this.levels;
+    }
 
     public void setLevels(List<Level> levels) {
         this.levels = levels;
