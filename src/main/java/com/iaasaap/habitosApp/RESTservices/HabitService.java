@@ -22,82 +22,81 @@ public class HabitService {
     @Autowired
     ExecHabitBO execHabitBO;
 
-    @GetMapping("/abstractHabits")
+    @GetMapping(Constants.GET_ABSTRACT_HABITS)
     List<AbstractHabit> getAbstractHabits() {
         return abstractHabitBO.getAllAbstractHabits();
     }
 
-    @GetMapping("/abstractHabits/{id}")
-    public AbstractHabit getAbstractHabit(@PathVariable String id) {
-        return abstractHabitBO.getAbstractHabit(id);
+    @GetMapping(Constants.GET_ABSTRACT_HABIT)
+    public AbstractHabit getAbstractHabit(@PathVariable String habitId) {
+        return abstractHabitBO.getAbstractHabit(habitId);
     }
 
-    @PostMapping("/createAbstractHabit")
+    @PostMapping(Constants.CREATE_ABSTRACT_HABIT)
     @ResponseBody
     public AbstractHabit createHabit(@RequestBody AbstractHabit abstractHabit) {
         return abstractHabitBO.createAbstractHabit(abstractHabit);
     }
 
-    @PutMapping("/setHabitLevels/{id}")
+    @PutMapping(Constants.SET_ABSTRACT_LEVELS)
     public AbstractHabit setAbstractHabitLevels(@PathVariable String id, @RequestBody List<Level> levels) {
-        //levels.stream().forEach(x -> System.out.println(x));
         abstractHabitBO.setAbstractHabitLevels(id, levels);
         return null;
     }
 
-    @DeleteMapping("/abstractHabit/{id}")
-    public void deleteAbstractHabit(@PathVariable String id) {
-        abstractHabitBO.deleteAbstractHabit(id);
+    @DeleteMapping(Constants.GET_ABSTRACT_HABIT)
+    public void deleteAbstractHabit(@PathVariable String habitId) {
+        abstractHabitBO.deleteAbstractHabit(habitId);
     }
 
 
-    @GetMapping("/sketchHabits")
+    @GetMapping(Constants.GET_SKETCH_HABITS)
     List<SketchHabit> getSketchHabits() {
         return sketchHabitBO.getAllSketchHabits();
     }
 
-    @GetMapping("/sketchHabits/{id}")
+    @GetMapping(Constants.GET_SKETCH_HABIT)
     SketchHabit getSketchHabits(@PathVariable String id) {
         return sketchHabitBO.getSketchHabit(id);
     }
 
-    @PostMapping("/createSketchHabit/")
+    @PostMapping(Constants.CREATE_SKETCH_HABIT)
     SketchHabit createSketchHabit(@RequestBody SketchHabit sketchHabit) {
         return sketchHabitBO.createSketchHabit(sketchHabit);
     }
 
-    @PostMapping("/createSketchHabit/{id}")
-    SketchHabit createSketchHabit(@PathVariable String id) {
-        return sketchHabitBO.createSketchHabitFromAbstract(id);
+    @PostMapping(Constants.CREATE_SKETCH_HABIT_FROM_ABSTRACT)
+    SketchHabit createSketchHabit(@PathVariable String habitId) {
+        return sketchHabitBO.createSketchHabitFromAbstract(habitId);
     }
 
-    @PostMapping("/setHabitLevels/{id}")
-    public void setSketchHabitLevels(@PathVariable String id, @RequestBody List<Level> levels) {
-        sketchHabitBO.setSketchHabitLevels(id, levels);
+    @PostMapping(Constants.SET_SKETCH_LEVELS)
+    public void setSketchHabitLevels(@PathVariable String habitId, @RequestBody List<Level> levels) {
+        sketchHabitBO.setSketchHabitLevels(habitId, levels);
     }
 
-    @DeleteMapping("/sketchHabit/{id}")
+    @DeleteMapping(Constants.GET_SKETCH_HABIT)
     public void deleteSketchHabit(@PathVariable String habitId) {
         sketchHabitBO.deleteSketchHabit(habitId);
     }
 
-
-    @GetMapping("/execHabits/{id}")
-    public ExecHabit getExecHabits(@PathVariable String id) {
-        return execHabitBO.getExecHabit(id);
+    @GetMapping(Constants.GET_EXEC_HABIT)
+    public ExecHabit getExecHabit(@PathVariable String habitId) {
+        return execHabitBO.getExecHabit(habitId);
     }
 
-    @PostMapping("/createExecHabit/{sketchHabitId}")
-    public ExecHabit createExecHabit(@PathVariable String sketchHabitId) {
+    @PostMapping(Constants.CREATE_EXEC_HABIT_FROM_SKETCH)
+    public ExecHabit createExecHabitFromSketch(@PathVariable String sketchHabitId) {
         return execHabitBO.createExecHabit(sketchHabitId);
     }
-    @PutMapping("editExecHabit/{id}/")
-    public ExecHabit editExecHabit(@RequestBody ExecHabit execHabit){
+
+    @PutMapping(Constants.EDIT_EXEC_HABIT)
+    public ExecHabit editExecHabit(@RequestBody ExecHabit execHabit) {
         return execHabitBO.updateHabit(execHabit);
     }
 
-    @DeleteMapping("/execHabit/{id}/")
-    public void deleteExecHabit(@PathVariable String id) {
-        execHabitBO.delete(id);
+    @DeleteMapping(Constants.GET_EXEC_HABIT)
+    public void deleteExecHabit(@PathVariable String habitId) {
+        execHabitBO.delete(habitId);
     }
 }
