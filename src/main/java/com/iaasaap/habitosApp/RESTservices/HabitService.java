@@ -32,7 +32,7 @@ public class HabitService {
         return abstractHabitBO.getAbstractHabit(habitId);
     }
 
-    @PostMapping(Constants.CREATE_ABSTRACT_HABIT)
+    @PostMapping(Constants.GET_ABSTRACT_HABITS)
     @ResponseBody
     public AbstractHabit createHabit(@RequestBody AbstractHabit abstractHabit) {
         return abstractHabitBO.createAbstractHabit(abstractHabit);
@@ -60,14 +60,14 @@ public class HabitService {
         return sketchHabitBO.getSketchHabit(id);
     }
 
-    @PostMapping(Constants.CREATE_SKETCH_HABIT)
+    @PostMapping(Constants.GET_SKETCH_HABITS)
     SketchHabit createSketchHabit(@RequestBody SketchHabit sketchHabit) {
         return sketchHabitBO.createSketchHabit(sketchHabit);
     }
 
     @PostMapping(Constants.CREATE_SKETCH_HABIT_FROM_ABSTRACT)
-    SketchHabit createSketchHabit(@PathVariable String habitId) {
-        return sketchHabitBO.createSketchHabitFromAbstract(habitId);
+    SketchHabit createSketchHabit(@PathVariable String abstractHabitId) {
+        return sketchHabitBO.createSketchHabitFromAbstract(abstractHabitId);
     }
 
     @PostMapping(Constants.SET_SKETCH_LEVELS)

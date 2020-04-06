@@ -1,7 +1,5 @@
 package com.iaasaap.habitosApp;
 
-import com.iaasaap.habitosApp.habits.AbstractHabitRepository;
-import com.iaasaap.habitosApp.habits.SketchHabitRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,9 +21,12 @@ public class HabitosAppApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(AbstractHabitRepository abstractHabitRepository, SketchHabitRepository sketchHabitRepository) {
+    public CommandLineRunner demo() {
         return args -> {
-
+            // Usuario u1 se registra, pone sus datos y escribe sus preferenci as.
+            // u1 encuentra desde el pool de habitos abstractos un habito que le interesa y lo copia para hacerlo suyo en sketch
+            // u1 ya tiene el hábito en sketch y lo modifica sus levels a unos que le convengan más
+            // u1 tiene listo su sketch y activa el mecanismo para generar un exec.
         };
     }
 

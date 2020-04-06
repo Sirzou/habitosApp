@@ -4,33 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 @NodeEntity
 @Getter
 @Setter
-public class AbstractHabit {
-    @Id
-    @GeneratedValue
-    private Long id;
-    @Property(name = "creation")
-    private String habitCreation;
-    @Property(name = "ownerId")
-    private Long ownerId;
-    @Property(name = "habitName")
-    private String habitName;
-    @Property(name = "description")
-    private String description;
-    @Relationship(type = "LEVEL", direction = Relationship.UNDIRECTED)
-    private List<Level> levels;
+public class AbstractHabit extends Habit{
 
-
-    public AbstractHabit(String name, String description, Long ownerId) {
-        this.habitCreation = LocalDateTime.now().toString();
-        this.habitName = name;
-        this.description = description;
-        this.ownerId = ownerId;
+    public AbstractHabit(String name, String description) {
+        super(name, description);
     }
 
     public String getHabitName() {
@@ -50,6 +32,6 @@ public class AbstractHabit {
     }
 
     public String toString() {
-        return this.habitName + " - " + this.description + " - from user " + this.ownerId + " - " + this.levels;
+        return this.habitName + " - " + this.description + " - " + this.levels;
     }
 }

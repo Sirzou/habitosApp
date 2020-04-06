@@ -5,7 +5,6 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.Property;
 import org.neo4j.ogm.annotation.Relationship;
 
-import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.List;
 
@@ -21,10 +20,7 @@ public class Schedule {
     private boolean isPersonalized;
     @Property
     private Period antelacion;
-    @Relationship(type = "SORTS")
-    List<SortDay> sortDays;
+    @Relationship(type = "SORT")
+    private List<SortDay> sortDay;
 
-    public static void main(String[] args) {
-
-    }
 }

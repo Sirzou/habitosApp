@@ -23,9 +23,9 @@ public class UserServiceImpl implements UserService {
         return userBO.getUserById(Long.parseLong(userId));
     }
 
-    @PostMapping(Constants.CREATE_USER)
+    @PostMapping(Constants.GET_USERS)
     @ResponseBody
-    public User createHabit(@RequestBody User user) {
+    public User createUser(@RequestBody User user) {
         return userBO.createUser(user);
     }
 

@@ -21,7 +21,7 @@ public class SortDay {
     @Property
     private String levelAchieved;
     @Property
-    private LocalDateTime scheduledTime;
+    private LocalDateTime scheduledTS;
     @Property
     private LocalDateTime achievedTS;
     @Property

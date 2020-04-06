@@ -7,7 +7,6 @@ import com.iaasaap.habitosApp.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,9 +19,7 @@ public class UserBOImpl implements UserBO {
 
     @Override
     public List<User> getAllUsers() {
-        List userList = new ArrayList();
-        userRepository.findAll().forEach(x -> userList.add(x));
-        return userList;
+        return (List<User>) userRepository.findAll();
     }
 
     @Override
@@ -41,15 +38,9 @@ public class UserBOImpl implements UserBO {
     }
 
     public void linkHabit(String userId,String habitId){
-
         User user = userRepository.findById(Long.parseLong(userId)).get();
-        System.out.println(user);
-        List<SketchHabit> lista = (List<SketchHabit>) sketchHabitRepository.findAll();
-        lista.stream().forEach(x-> System.out.println(x));
         SketchHabit sketchHabit = sketchHabitRepository.findById(Long.parseLong(habitId)).get();
-        System.out.println(sketchHabit);
         user.getSketchedHabits().add(sketchHabit);
-        System.out.println(user);
         userRepository.save(user);
     }
 
