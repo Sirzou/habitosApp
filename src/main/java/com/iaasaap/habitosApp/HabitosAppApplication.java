@@ -1,23 +1,19 @@
 package com.iaasaap.habitosApp;
 
-import com.iaasaap.habitosApp.habits.AbstractHabit;
-import com.iaasaap.habitosApp.habits.AbstractHabitRepository;
-import com.iaasaap.habitosApp.habits.Level;
-import com.iaasaap.habitosApp.habits.LevelRepository;
-import com.iaasaap.habitosApp.users.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableNeo4jRepositories
+@EnableSwagger2
 public class HabitosAppApplication {
 
     public static void main(String[] args) {
@@ -25,38 +21,21 @@ public class HabitosAppApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(AbstractHabitRepository habitRepository, UserRepository userRepository, LevelRepository levelRepository) {
+    public CommandLineRunner demo() {
         return args -> {
-            List<Level> levels = new ArrayList<Level>();
-
-            Level l1 = new Level("1","uno",true);
-            Level l3 = new Level("3","tres",true);
-            Level l5 = new Level("5","cinco",true);
-            levels.add(l1);
-            levels.add(l3);levels.add(l5);
-            //System.out.println(levelRepository.getBasicHabitLevels());
-            //levelRepository.getBasicHabitLevels();
-
-            levelRepository.deleteAll();
-
-            levelRepository.save(l1);
-            levelRepository.save(l3);
-            levelRepository.save(l5);
-
-
-
-
-            AbstractHabit ah = new AbstractHabit("Early woke", "Wake up early", Long.parseLong("1"));
-            habitRepository.save(ah);
-
-
-
-
-            ah.setLevels(levels);
-            habitRepository.save(ah);
-            System.out.println(ah);
-            System.out.println(ah.getLevels());
-
+            // Usuario u1 se registra, pone sus datos y escribe sus preferenci as.
+            // u1 encuentra desde el pool de habitos abstractos un habito que le interesa y lo copia para hacerlo suyo en sketch
+            // u1 ya tiene el hábito en sketch y lo modifica sus levels a unos que le convengan más
+            // u1 tiene listo su sketch y activa el mecanismo para generar un exec.
         };
+    }
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();
     }
 }

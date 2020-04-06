@@ -26,10 +26,22 @@ public class Level {
         this.description = description;
         this.active = active;
     }
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return this.description;
+    }
+
+    @Override
+    public String toString() {
+        return "Level{" +
+                "levelId=" + levelId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", active=" + active +
+                '}';
     }
 }

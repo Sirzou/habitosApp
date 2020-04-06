@@ -1,6 +1,6 @@
 package com.iaasaap.habitosApp.RESTservices;
 
-import com.iaasaap.habitosApp.ServicesBO.UserBOImpl;
+import com.iaasaap.habitosApp.ServicesBO.UserBO;
 import com.iaasaap.habitosApp.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,26 +11,32 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserBOImpl userBOImpl;
+    private UserBO userBO;
 
-    @GetMapping("/users")
+    @GetMapping(Constants.GET_USERS)
     public List<User> getUsers() {
-        return userBOImpl.getAllUsers();
+        return userBO.getAllUsers();
     }
 
-    @GetMapping("/users/{id}")
-    public User getUser(@PathVariable String id) {
-        return userBOImpl.getUserById(Long.parseLong(id));
+    @GetMapping(Constants.GET_USER)
+    public User getUser(@PathVariable String userId) {
+        return userBO.getUserById(Long.parseLong(userId));
     }
 
-    @PostMapping("/createUser")
+    @PostMapping(Constants.GET_USERS)
     @ResponseBody
-    public User createHabit(@RequestBody User user) {
-        return userBOImpl.createUser(user);
+    public User createUser(@RequestBody User user) {
+        return userBO.createUser(user);
     }
 
-    @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable String id){
-        userBOImpl.deleteUserById(Long.parseLong(id));
+    @DeleteMapping(Constants.GET_USER)
+    public void deleteUser(@PathVariable String userId){
+        userBO.deleteUserById(Long.parseLong(userId));
+    }
+
+    @PutMapping(Constants.LINK_USER_WITH_HABIT)
+    public void linkUserWithHabit(@PathVariable String userId,@PathVariable String habitId){
+        System.out.println(""+userId+" "+habitId);
+        userBO.linkHabit(userId,habitId);
     }
 }
