@@ -1,5 +1,7 @@
 package com.iaasaap.habitosApp.ServicesBO;
 
+import com.iaasaap.habitosApp.habits.AbstractHabit;
+import com.iaasaap.habitosApp.habits.AbstractHabitRepository;
 import com.iaasaap.habitosApp.habits.SketchHabit;
 import com.iaasaap.habitosApp.habits.SketchHabitRepository;
 import com.iaasaap.habitosApp.users.User;
@@ -16,6 +18,8 @@ public class UserBOImpl implements UserBO {
     private UserRepository userRepository;
     @Autowired
     private SketchHabitRepository sketchHabitRepository;
+    @Autowired
+    private AbstractHabitRepository abstractHabitRepository;
 
     @Override
     public List<User> getAllUsers() {
@@ -41,6 +45,15 @@ public class UserBOImpl implements UserBO {
         User user = userRepository.findById(Long.parseLong(userId)).get();
         SketchHabit sketchHabit = sketchHabitRepository.findById(Long.parseLong(habitId)).get();
         user.getSketchedHabits().add(sketchHabit);
+        userRepository.save(user);
+    }
+
+    public void cloneAbstractIntoSketch(String userId, String abstractHabitId){
+        User user = userRepository.findById(Long.parseLong(userId)).get();
+        AbstractHabit abstractHabit = abstractHabitRepository.findById(Long.parseLong(abstractHabitId)).get();
+        SketchHabit sketchHabit = new SketchHabit(abstractHabit);
+        SketchHabit savedSketchHabit = sketchHabitRepository.save(sketchHabit);
+        user.getSketchedHabits().add(savedSketchHabit);
         userRepository.save(user);
     }
 

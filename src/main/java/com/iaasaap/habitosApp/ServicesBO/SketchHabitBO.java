@@ -14,6 +14,8 @@ public interface SketchHabitBO {
 
     SketchHabit getSketchHabit(String sketchHabitId);
 
+    SketchHabit udpateSketchHabit(String sketchHabitId, SketchHabit sketchHabit);
+
     void deleteSketchHabit(String sketchHabitId);
 
     void setSketchHabitLevels(String habitId, List<Level> levels);

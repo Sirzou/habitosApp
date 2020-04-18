@@ -19,4 +19,9 @@ public final class Constants {
     public static final String CREATE_EXEC_HABIT_FROM_SKETCH = "/habit/execs/{sketchHabitId}";
     public static final String GET_EXEC_HABIT = "/habit/execs/{habitId}";
     public static final String EDIT_EXEC_HABIT = "/habit/exec/edit/{habitId}";
+
+    public static final String OWN_ABSTRACTHABIT = "/user/{userId}/abstract-habit/{abstractHabit}";
+
+    public static final String GET_SCHEDULES = "/habit/schedules";
+    public static final String GET_SCHEDULE = "/habit/schedules/{scheduleId}";
 }

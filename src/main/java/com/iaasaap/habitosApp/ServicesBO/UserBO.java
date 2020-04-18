@@ -10,4 +10,5 @@ public interface UserBO {
     User createUser(User user);
     void deleteUserById(Long userId);
     void linkHabit(String userId, String habitId);
+    void cloneAbstractIntoSketch(String userId, String abstractHabitId);
 }

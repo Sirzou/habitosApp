@@ -30,13 +30,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @DeleteMapping(Constants.GET_USER)
-    public void deleteUser(@PathVariable String userId){
+    public void deleteUser(@PathVariable String userId) {
         userBO.deleteUserById(Long.parseLong(userId));
     }
 
     @PutMapping(Constants.LINK_USER_WITH_HABIT)
-    public void linkUserWithHabit(@PathVariable String userId,@PathVariable String habitId){
-        System.out.println(""+userId+" "+habitId);
-        userBO.linkHabit(userId,habitId);
+    public void linkUserWithHabit(@PathVariable String userId, @PathVariable String habitId) {
+        System.out.println("" + userId + " " + habitId);
+        userBO.linkHabit(userId, habitId);
+    }
+
+    @PutMapping(Constants.OWN_ABSTRACTHABIT)
+    public void cloneFromAbstractHabit(@PathVariable String userId, @PathVariable String abstractHabit) {
+        userBO.cloneAbstractIntoSketch(userId, abstractHabit);
     }
 }

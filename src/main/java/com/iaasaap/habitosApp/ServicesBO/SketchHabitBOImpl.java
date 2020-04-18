@@ -1,6 +1,8 @@
 package com.iaasaap.habitosApp.ServicesBO;
 
 import com.iaasaap.habitosApp.habits.*;
+import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,24 @@ public class SketchHabitBOImpl implements SketchHabitBO {
         AbstractHabit abstractHabit = abstractHabitRepository.findById(Long.parseLong(habitId)).get();
         SketchHabit sketchHabit = new SketchHabit(abstractHabit);
         return sketchHabitRepository.save(sketchHabit);
+    }
+
+    public SketchHabit udpateSketchHabit(String sketchHabitId, SketchHabit sketchHabitToCopy) {
+        SketchHabit savedSketchHabit = sketchHabitRepository.findById(Long.parseLong(sketchHabitId)).get();
+        editSketchHabit(sketchHabitToCopy, savedSketchHabit);
+        return sketchHabitRepository.save(savedSketchHabit);
+    }
+
+    private void editSketchHabit(SketchHabit sketchHabitOrigin, SketchHabit sketchHabitDestiny) {
+        if (sketchHabitOrigin != null) {
+            if (sketchHabitOrigin.getParentHabit() != null) {
+                sketchHabitDestiny.setParentHabit(sketchHabitOrigin.getParentHabit());
+            }
+            if (sketchHabitOrigin.getSchedule() != null) {
+                sketchHabitDestiny.setSchedule(sketchHabitOrigin.getSchedule());
+            }
+            sketchHabitDestiny.setOn(sketchHabitOrigin.isOn());
+        }
     }
 
     @Override

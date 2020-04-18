@@ -1,4 +1,4 @@
-package com.iaasaap.habitosApp.habits;
+package com.iaasaap.habitosApp.habits.schedules;
 
 import lombok.Data;
 import lombok.Getter;

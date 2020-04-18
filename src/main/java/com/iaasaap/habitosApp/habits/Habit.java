@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 @NodeEntity
 public class Habit {
     @Id
@@ -40,13 +39,17 @@ public class Habit {
     public void copyFromHabit(Habit habit) {
         this.habitCreation = LocalDateTime.now().toString();
         if (habit != null && habit.getLevels() != null) {
-            this.levels = new ArrayList<>();
-            habit.getLevels().stream()
-                    .forEach(x -> this.levels.add(
-                            new Level(x.getName(), x.getDescription(), true)));
+            setLevels(habit.getLevels());
             this.habitName = habit.getHabitName();
             this.description = habit.getDescription();
         }
+    }
+
+    public void setLevels(List<Level> levels) {
+        this.levels = new ArrayList<>();
+        levels.stream()
+                .forEach(x -> this.levels.add(
+                        new Level(x.getName(), x.getDescription(), true)));
     }
 
     public String getHabitName() {

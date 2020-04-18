@@ -60,6 +60,11 @@ public class HabitService {
         return sketchHabitBO.getSketchHabit(id);
     }
 
+    @PutMapping(Constants.GET_SKETCH_HABIT)
+    SketchHabit updateSketchHabit(@PathVariable String sketchHabitId, @RequestBody SketchHabit sketchHabit) {
+        return sketchHabitBO.udpateSketchHabit(sketchHabitId, sketchHabit);
+    }
+
     @PostMapping(Constants.GET_SKETCH_HABITS)
     SketchHabit createSketchHabit(@RequestBody SketchHabit sketchHabit) {
         return sketchHabitBO.createSketchHabit(sketchHabit);
@@ -79,6 +84,7 @@ public class HabitService {
     public void deleteSketchHabit(@PathVariable String habitId) {
         sketchHabitBO.deleteSketchHabit(habitId);
     }
+
 
     @GetMapping(Constants.GET_EXEC_HABIT)
     public ExecHabit getExecHabit(@PathVariable String habitId) {
