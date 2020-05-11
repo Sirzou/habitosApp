@@ -8,12 +8,8 @@ import java.util.Optional;
 
 
 public interface AbstractHabitRepository extends CrudRepository<AbstractHabit, Long> {
-
     @Override
     Optional<AbstractHabit> findById(Long habitId);
-
-    @Override
-    AbstractHabit save(AbstractHabit abstractHabit);
 
     @Override
     List<AbstractHabit> findAll();

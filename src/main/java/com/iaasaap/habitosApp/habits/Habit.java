@@ -1,12 +1,16 @@
 package com.iaasaap.habitosApp.habits;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.neo4j.ogm.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
+
+import lombok.Getter;
 
 @Getter
 @NodeEntity
@@ -25,7 +29,7 @@ public class Habit {
     @Relationship(type = "LEVEL", direction = Relationship.UNDIRECTED)
     protected List<Level> levels;
 
-    protected Habit(String name, String description) {
+    protected Habit(final String name, final String description) {
         this.habitCreation = LocalDateTime.now().toString();
         this.habitName = name;
         this.description = description;
@@ -36,7 +40,7 @@ public class Habit {
         this.habitCreation = LocalDateTime.now().toString();
     }
 
-    public void copyFromHabit(Habit habit) {
+    public void copyFromHabit(final Habit habit) {
         this.habitCreation = LocalDateTime.now().toString();
         if (habit != null && habit.getLevels() != null) {
             setLevels(habit.getLevels());
@@ -45,7 +49,7 @@ public class Habit {
         }
     }
 
-    public void setLevels(List<Level> levels) {
+    public void setLevels(final List<Level> levels) {
         this.levels = new ArrayList<>();
         levels.stream()
                 .forEach(x -> this.levels.add(

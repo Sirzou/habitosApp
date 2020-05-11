@@ -6,9 +6,6 @@ import java.util.Optional;
 
 public interface SketchHabitRepository extends CrudRepository<SketchHabit, Long> {
     @Override
-    SketchHabit save(SketchHabit sketchHabit);
-
-    @Override
     Iterable<SketchHabit> findAll();
 
     @Override

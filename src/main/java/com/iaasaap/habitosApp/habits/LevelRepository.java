@@ -8,9 +8,6 @@ import java.util.Optional;
 
 public interface LevelRepository extends CrudRepository<Level, Long> {
     @Override
-    Level save(Level level);
-
-    @Override
     Optional<Level> findById(Long aLong);
 
     @Override

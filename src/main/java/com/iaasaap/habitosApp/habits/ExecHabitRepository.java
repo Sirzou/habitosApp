@@ -6,9 +6,6 @@ import java.util.Optional;
 
 public interface ExecHabitRepository extends CrudRepository<ExecHabit,Long> {
     @Override
-    ExecHabit save(ExecHabit execHabit);
-
-    @Override
     Iterable<ExecHabit> findAll();
 
     @Override
