@@ -20,7 +20,7 @@ public class AbstractHabitBOImpl implements AbstractHabitBO {
 
     @Override
     public List<AbstractHabit> getAllAbstractHabits() {
-        return abstractHabitRepository.findAll();
+        return (List<AbstractHabit>) abstractHabitRepository.findAll();
     }
 
     @Override

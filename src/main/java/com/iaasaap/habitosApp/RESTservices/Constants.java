@@ -5,7 +5,7 @@ public final class Constants {
 
     public static final String GET_USERS = "/users";
     public static final String GET_USER = "/users/{userId}";
-    public static final String LINK_USER_WITH_HABIT =  "/linkUserHabit/{userId}/{habitId}";
+    public static final String LINK_USER_WITH_HABIT = "/linkUserHabit/{userId}/{habitId}";
 
     public static final String GET_ABSTRACT_HABITS = "/habit/abstracts";
     public static final String GET_ABSTRACT_HABIT = "/habit/abstracts/{habitId}";

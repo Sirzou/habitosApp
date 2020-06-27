@@ -1,34 +1,17 @@
 package com.iaasaap.habitosApp.habits;
 
+import com.iaasaap.habitosApp.users.User;
 import lombok.Getter;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.*;
-
-import java.util.*;
+import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
 @Getter
 @Setter
-public class AbstractHabit extends Habit{
+public class AbstractHabit extends Habit {
 
-    public AbstractHabit(String name, String description) {
-        super(name, description);
-    }
-
-    public String getHabitName() {
-        return this.habitName;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public List<Level> getLevels() {
-        return this.levels;
-    }
-
-    public void setLevels(List<Level> levels) {
-        this.levels = levels;
+    public AbstractHabit(String name, String description, User owner) {
+        super(name, description, owner);
     }
 
     public String toString() {

@@ -1,18 +1,14 @@
 package com.iaasaap.habitosApp.habits;
 
+import com.iaasaap.habitosApp.users.User;
+import lombok.Data;
+import org.neo4j.ogm.annotation.*;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
-import org.neo4j.ogm.annotation.Relationship;
-
-import lombok.Getter;
-
-@Getter
+@Data
 @NodeEntity
 public class Habit {
     @Id
@@ -20,20 +16,20 @@ public class Habit {
     protected Long id;
     @Property(name = "creation")
     protected String habitCreation;
-    @Property(name = "ownerId")
-    private Long ownerId;
     @Property(name = "habitName")
     protected String habitName;
     @Property(name = "description")
     protected String description;
     @Relationship(type = "LEVEL", direction = Relationship.UNDIRECTED)
     protected List<Level> levels;
+    @Relationship(type = "OWNER")
+    private User owner;
 
-    protected Habit(final String name, final String description) {
+    protected Habit(final String name, final String description, User owner) {
         this.habitCreation = LocalDateTime.now().toString();
         this.habitName = name;
         this.description = description;
-        this.ownerId = Long.parseLong("1");
+        this.owner = owner;
     }
 
     protected Habit() {
@@ -50,10 +46,9 @@ public class Habit {
     }
 
     public void setLevels(final List<Level> levels) {
-        this.levels = new ArrayList<>();
-        levels.stream()
-                .forEach(x -> this.levels.add(
-                        new Level(x.getName(), x.getDescription(), true)));
+        this.levels = levels.stream()
+                .map(level -> new Level(level.getName(), level.getDescription(), true))
+                .collect(Collectors.toList());
     }
 
     public String getHabitName() {

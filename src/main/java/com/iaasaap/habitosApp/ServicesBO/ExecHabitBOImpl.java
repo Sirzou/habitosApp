@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ExecHabitBOImpl implements ExecHabitBO{
+public class ExecHabitBOImpl implements ExecHabitBO {
 
     @Autowired
     SketchHabitRepository sketchHabitRepository;

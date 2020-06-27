@@ -14,26 +14,27 @@ public class ScheduleService {
     ScheduleBO scheduleBO;
 
     @GetMapping(Constants.GET_SCHEDULES)
-    public List<Schedule> getSchedules(){
+    public List<Schedule> getSchedules() {
         return scheduleBO.getAllSchedules();
     }
 
     @GetMapping(Constants.GET_SCHEDULE)
-    public Schedule getSchedule(@PathVariable String scheduleId){
+    public Schedule getSchedule(@PathVariable String scheduleId) {
         return scheduleBO.getSchedule(scheduleId);
     }
 
     @PostMapping(Constants.GET_SCHEDULES)
-    public Schedule createSchedule(@RequestBody Schedule schedule){
+    public Schedule createSchedule(@RequestBody Schedule schedule) {
         return scheduleBO.createSchedule(schedule);
     }
 
     @PutMapping(Constants.GET_SCHEDULE)
-    public Schedule updateSchedule(@PathVariable String scheduleId, @RequestBody Schedule schedule){
+    public Schedule updateSchedule(@PathVariable String scheduleId, @RequestBody Schedule schedule) {
         return scheduleBO.updateSchedule(scheduleId, schedule);
     }
+
     @DeleteMapping(Constants.GET_SCHEDULE)
-    public void deleteSchedule(@PathVariable String scheduleId){
+    public void deleteSchedule(@PathVariable String scheduleId) {
         scheduleBO.deleteSchedule(scheduleId);
     }
 }

@@ -1,6 +1,5 @@
 package com.iaasaap.habitosApp.habits.schedules;
 
-import com.iaasaap.habitosApp.habits.schedules.Schedule;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

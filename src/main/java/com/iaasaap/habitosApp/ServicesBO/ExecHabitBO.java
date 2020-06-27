@@ -11,7 +11,7 @@ public interface ExecHabitBO {
 
     ExecHabit getExecHabit(String habitId);
 
-    void delete(String hjabitId);
+    void delete(String habitId);
 
     ExecHabit updateHabit(ExecHabit execHabit);
 

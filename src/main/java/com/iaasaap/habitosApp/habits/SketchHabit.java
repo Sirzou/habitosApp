@@ -1,13 +1,14 @@
 package com.iaasaap.habitosApp.habits;
 
 import com.iaasaap.habitosApp.habits.schedules.Schedule;
+import com.iaasaap.habitosApp.users.User;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.neo4j.ogm.annotation.*;
-
-import java.util.List;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
 @Setter
@@ -15,17 +16,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class SketchHabit extends Habit {
-
-    public boolean isOn() {
-        return isOn;
-    }
-
-    public void setOn(boolean on) {
-        isOn = on;
-    }
-
     @Property
-    private boolean isOn;
+    private boolean on;
     @Relationship(type = "PARENT")
     private AbstractHabit parentHabit;
     @Relationship(type = "SCHEDULE")
@@ -35,7 +27,7 @@ public class SketchHabit extends Habit {
         super();
         this.parentHabit = abstractHabit;
         copyFromHabit(abstractHabit);
-        isOn = false;
+        on = false;
     }
 
     public void setParentHabit(AbstractHabit parentHabit) {
@@ -54,11 +46,7 @@ public class SketchHabit extends Habit {
         return this.schedule;
     }
 
-    public SketchHabit(String name, String description) {
-        super(name, description);
-    }
-
-    public void setLevels(List<Level> levels) {
-        this.levels = levels;
+    public SketchHabit(String name, String description, User owner) {
+        super(name, description, owner);
     }
 }

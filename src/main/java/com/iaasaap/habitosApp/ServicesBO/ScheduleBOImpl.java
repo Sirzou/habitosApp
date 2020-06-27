@@ -36,23 +36,23 @@ public class ScheduleBOImpl implements ScheduleBO {
         return scheduleRepository.save(savedSchedule);
     }
 
-    public void editSchedule(Schedule originSchedule, Schedule destinySchedule){
-        if (originSchedule!=null){
-            if(originSchedule.getAntelacion()!=null){
+    public void editSchedule(Schedule originSchedule, Schedule destinySchedule) {
+        if (originSchedule != null) {
+            if (originSchedule.getAntelacion() != null) {
                 destinySchedule.setAntelacion(originSchedule.getAntelacion());
             }
-            if(originSchedule.getDefaultTime()!=null){
+            if (originSchedule.getDefaultTime() != null) {
                 destinySchedule.setDefaultTime(originSchedule.getDefaultTime());
             }
-            if(originSchedule.getScheduleType()!=null){
+            if (originSchedule.getScheduleType() != null) {
                 destinySchedule.setScheduleType(originSchedule.getScheduleType());
             }
-            if(originSchedule.getSortDays()!=null){
-                if(destinySchedule.getSortDays()==null){
+            if (originSchedule.getSortDays() != null) {
+                if (destinySchedule.getSortDays() == null) {
                     destinySchedule.setSortDays(new ArrayList<SortDay>());
                 }
                 Schedule finalDestinySchedule = destinySchedule;
-                originSchedule.getSortDays().stream().forEach(x-> finalDestinySchedule.getSortDays().add(x));
+                originSchedule.getSortDays().stream().forEach(x -> finalDestinySchedule.getSortDays().add(x));
             }
         }
     }

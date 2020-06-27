@@ -1,15 +1,10 @@
 package com.iaasaap.habitosApp.ServicesBO;
 
-import java.util.List;
-
-import com.iaasaap.habitosApp.habits.AbstractHabit;
-import com.iaasaap.habitosApp.habits.AbstractHabitRepository;
-import com.iaasaap.habitosApp.habits.Level;
-import com.iaasaap.habitosApp.habits.SketchHabit;
-import com.iaasaap.habitosApp.habits.SketchHabitRepository;
-
+import com.iaasaap.habitosApp.habits.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SketchHabitBOImpl implements SketchHabitBO {
